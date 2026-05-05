@@ -21,7 +21,7 @@
     <div class="col-lg-8">
       <div class="card shadow-sm">
         <div class="card-body p-4">
-          <form method="POST" action="{{ url_for('add_entry') }}" novalidate>
+          <form method="POST" action="{{ url_for('add_entry') }}" onsubmit="trackLead()" novalidate>
 
             <div class="row g-3">
 
@@ -92,4 +92,13 @@
     </div>
   </div>
 </div>
+
+<script>
+function trackLead() {
+  gtag('event', 'generate_lead', {
+    event_category: 'engagement',
+    event_label: 'application_submitted'
+  });
+}
+</script>
 {% endblock %}
